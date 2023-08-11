@@ -16,7 +16,7 @@ kfserving==0.5.1
 kubernetes>=12.0.1
 lmdb==0.98
 minio>=6.0.2, <7.0.0
-numpy>=1.18.4, <1.19.0
+numpy
 peewee==3.9.3
 psutil>=5.7.0
 pycryptodomex==3.6.6

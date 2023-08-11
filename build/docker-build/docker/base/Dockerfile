@@ -1,4 +1,4 @@
-FROM centos/python-36-centos7
+FROM centos-python3:3.9.17
 
 ARG version
 
@@ -17,8 +17,4 @@ RUN set -eux && \
     yum clean all
 
 RUN pip install --upgrade pip && \
-    sed -i '/tensorflow.*/d' /data/projects/python/requirements.txt && \
-    sed -i '/torch.*/d' /data/projects/python/requirements.txt && \
-    sed -i '/torchvision.*/d' /data/projects/python/requirements.txt && \
-    sed -i '/pytorch-lightning.*/d' /data/projects/python/requirements.txt && \
     pip install -r requirements.txt

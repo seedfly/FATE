@@ -58,13 +58,15 @@ package() {
 buildBase() {
         echo "START BUILDING BASE IMAGE"
         cd ${WORKING_DIR}
+	cat  ${WORKING_DIR}/catch/requirements.txt
         docker build --build-arg version=${version} -f ${WORKING_DIR}/docker/base/Dockerfile -t ${PREFIX}/base-image:${BASE_TAG} ${WORKING_DIR}/catch/
+	
         echo "FINISH BUILDING BASE IMAGE"
 }
 
 buildModule() {
         echo "START BUILDING IMAGE"
-        for module in "python" "fateboard" "eggroll" "python-nn"; do
+        for module in "python" ; do
         cd ${WORKING_DIR}
                 echo "### START BUILDING ${module} ###"
                 docker build --build-arg PREFIX=${PREFIX} --build-arg BASE_TAG=${BASE_TAG} --no-cache -t ${PREFIX}/${module}:${TAG} -f ${WORKING_DIR}/docker/modules/${module}/Dockerfile ${WORKING_DIR}/catch/
